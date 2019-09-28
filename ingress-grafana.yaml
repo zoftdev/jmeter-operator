@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jmeter-loadtest-grafana
+  labels:
+    app: jmeter-loadtest-grafana
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+  - host: jmeter-loadtest-grafana.snail.arctic.true.th
+    http:
+      paths:
+      - backend:
+          serviceName: jmeter-loadtest-grafana
+          servicePort: 3000
+        path: /

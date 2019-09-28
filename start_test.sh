@@ -37,8 +37,10 @@ test_name="$(basename "$jmx")"
 
 master_pod=`kubectl -n $namespace get po | grep jmeter-master | awk '{print $1}'`
 
+echo kubectl -n $namespace cp "$jmx" "$master_pod:/$test_name"
 kubectl -n $namespace cp "$jmx" "$master_pod:/$test_name"
 
-## Echo Starting Jmeter load test
 
+## Echo Starting Jmeter load test
+echo kubectl -n $namespace exec -ti $master_pod -- /bin/bash /load_test "$test_name"
 kubectl -n $namespace exec -ti $master_pod -- /bin/bash /load_test "$test_name"

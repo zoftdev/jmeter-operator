@@ -1,8 +1,8 @@
 apiVersion: loadtest.jmeter.com/v1alpha1
 kind: Jmeter
 metadata:
-  name: tqa-loadtest
-  namespace: tqa
+  name: jmeter-loadtest
+  namespace: jmeter
 spec:
   # Add fields here
   slave_size: 2
